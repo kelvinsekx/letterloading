@@ -1,0 +1,24 @@
+{
+  "name": "letterloading",
+  "version": "1.0.0",
+  "description": "Javascript letter loading library",
+  "main": "letterloading.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kelvinsekx/letterloading.git"
+  },
+  "keywords": [
+    "letterloading",
+    "animation",
+    "library"
+  ],
+  "author": "kelvinsekx",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kelvinsekx/letterloading/issues"
+  },
+  "homepage": "https://github.com/kelvinsekx/letterloading#readme"
+}

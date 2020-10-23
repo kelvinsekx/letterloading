@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>jsproject</title>
+    <style>
+      .makeRed {
+        color: rgb(240, 70, 240);
+        font-size: 1.9rem;
+        font-weight: bolder;
+      }
+    </style>
+  </head>
+  <body>
+    <p>I like:<span id="main"></span></p>
+    <script src="./letterloading.js"></script>
+    <script>
+    let newletterloads = new LetterLoader('#main', {
+      strings:["kelvin is crazy amazing", "I love you", "I am gone the way"],
+    })
+    </script>
+  </body>
+</html>
