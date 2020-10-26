@@ -1,15 +1,8 @@
-const defaults = {
-    loadspeed: 9,
-    defaultspeed: 8,
-    char : "-",
-    hideChaar: true,
-    delay: 2500,
-    loop: true,
-}
+import {loadInitializer} from "./loadinitializer";
 
-class LetterLoader {
+export default class LetterLoading {
   constructor(element, options) {
-    this.load(element, options);
+    loadInitializer.load(this, element, options);
     this.beginAnimation();
   }
 
@@ -25,91 +18,6 @@ class LetterLoader {
     this.ArrayIndex = 0;
   }
 
-  load(el, options) {
-    this.el = this.getElement(el);
-    this.initialElContent = this.initialContent();
-    // make options from default s and the rest
-    this.options = { ...defaults, ...options };
-
-    //loading speed
-    this.loadSpeed = this.options.loadspeed;
-
-    // generate default speed
-    this.defaultSpeed = this.options.defaultspeed;
-
-    //loop
-    this.loop = this.options.loop
-
-    // strings
-    this.strings = this.options.strings;
-
-    //current string position
-    this.currentStrPos = 0;
-
-    //default shuffling
-    this._shuffle = false;
-
-    // bind currentString
-    this.currentString;
-
-    // get randomelement
-    this.randomEl;
-
-    // hidden char to fill space
-    this.char = this.options.char;
-
-    //if hide char
-    this.hideChar = this.options.hideChaar;
-
-    // array index
-    this.ArrayIndex = 0;
-
-    // delay before continuing to loop over string
-    this.delay = this.options.delay
-
-    // stringlength
-    // get order in which strings appeared in array
-    this.sequence = [];
-    for (let i in this.strings) {
-      this.sequence[i] = i;
-    }
-    this.appendCsstoHead()
-    this.hideCharByForce();
-  }
-
-  hideCharByForce() {
-    if(!this.hideChar)return
-    this.char = `<span class="data-hide">${this.char}</span>`;
-  }
-
-  appendCsstoHead() {
-    const cssname = "data-hide";
-
-    if (!this.hideChar) {
-      return;
-    }
-    if (document.querySelector(`[${cssname}]`)) {
-      return;
-    }
-
-    let css = document.createElement("style");
-    css.type = "text/css";
-    css.setAttribute(cssname, true);
-
-    let innerCss = "";
-
-    if (this.hideChar) {
-      innerCss += `
-              .data-hide{
-                opacity: 0;}`;
-    }
-
-    if (css.length === 0) {
-        return;
-      }
-      css.innerHTML = innerCss;
-      document.body.appendChild(css);
-  }
 
   beginAnimation() {
     this.timeout = setTimeout(() => {
@@ -211,13 +119,4 @@ class LetterLoader {
     this.sequence = this.sequence.sort(() => Math.random() - 0.5);
   }
 
-  getElement(element) {
-    if (typeof element === "string") {
-      return element[0] === "#" || element[0] === "."
-        ? document.querySelector(element)
-        : document.getElementById(element);
-    } else {
-      return element;
-    }
-  }
 }
