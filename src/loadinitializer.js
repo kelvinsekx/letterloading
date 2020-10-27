@@ -24,7 +24,10 @@ export default class LoadInitializer {
     self.loop = self.options.loop;
 
     // strings
-    self.strings = self.options.strings;
+    // then remove the space infront and back...
+    // it is needed for us to make better string num 
+    // calculations
+    self.strings = self.options.strings.map((string)=> string.trim());
 
     //current string position
     self.currentStrPos = 0;
@@ -46,6 +49,9 @@ export default class LoadInitializer {
 
     // array index
     self.ArrayIndex = 0;
+
+    // set time to wait before rendering animation to DOM
+    self.delayAnime = 500
 
     // delay before continuing to loop over string
     self.delay = self.options.delay;

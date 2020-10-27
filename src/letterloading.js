@@ -1,16 +1,19 @@
-import {loadinitializer} from "./loadinitializer.js";
-
+import { loadinitializer } from "./loadinitializer.js";
 
 /**
  * Hey, tell me you love to simulate letter loading...
- * 
+ *
  * @param {string} el, this can be an HMTL element ID or element
- * @param {object} options options is an object that has some of the requirements...check './defaults.js to learn more
+ * @param {object} options options is an object that has some of the requirements. Check './defaults.js' to learn more
  * @returns {object} a new LetterLoading object
  */
 export default class LetterLoading {
+  // construct --- no construct
   constructor(el, options) {
-    loadinitializer.load(this, el, options)
+    // initial required params --- load methos available in loadinitializer
+    loadinitializer.load(this, el, options);
+
+    // this methos begins the letter loading simulation
     this.beginAnimation();
   }
 
@@ -21,70 +24,80 @@ export default class LetterLoading {
 
   reset(restart = true) {
     clearInterval(this.timeout);
-    this.insertText('');
+    this.insertText("");
     this.currentStrPos = 0;
     this.ArrayIndex = 0;
   }
 
-
   beginAnimation() {
-    // (this)=> {}
+    // ....WELCOME, wait for half a sec before starting animation -- wait sec is set as
+    // @param: delayAnime
     this.timeout = setTimeout(() => {
-      // get a random string from options.STRINGS array if _shuffle is true   
+      // get a random string from options.STRINGS array if _shuffle is true
       this.randomMize();
-      //this.random();
       this.beginAnime(this.currentStrPos, this.strings[this.ArrayIndex]);
-    }, 500);
+    }, this.delayAnime);
   }
 
   beginAnime(i, curr, str = []) {
-      // set this.currentString to the passed string args
-      this.currentString = curr
-      // creates a randomArray element usable to suff our strings
-      this.random()
-      // start our funny fetching strings
-    this.startFetching(i, curr, str)
+    // set this.currentString to the passed string args
+    this.currentString = curr;
+    // creates a randomArray element usable to suff our strings
+    this.random();
+    // start fetching letters
+    this.startFetching(i, curr, str);
   }
 
-  startFetching(i, curr, str){
-      // increase the speed at some point
-      if(i >= (curr.length/3 )){
-        this.loadSpeed = this.loadSpeed - 2
+  startFetching(i, curr, str) {
+    // increase the speed at some point
+    // if string reaches 30%,50% and 90% decrease speed by 20% consecutively
+    if(i >= (0.90*curr.length)){
+      this.loadSpeed = (this.loadSpeed - (0.33*this.loadSpeed));
+    }else if (i >= (0.50 * curr.length)){
+      this.loadSpeed = (this.loadSpeed-(0.20*this.loadSpeed));
+    }else if (i >= (0.30 * curr.length)){
+      this.loadSpeed = (this.loadSpeed-(0.20*this.loadSpeed));
     }
-      // get default speed
-      // make a simulating speed
+     
+
+    // make a simulating speed
     const humanize = this.humanize(this.loadSpeed);
     // check state if its empty
     if (Object.keys(str).length === 0)
       str = this.getSudoStringArray(curr.length, this.char);
 
-    if(i > curr.length - 1){
-        this.ArrayIndex++
-        this.currentStrPos=0
-         this.loadSpeed = this.defaultSpeed
-        // console.log(this.strings[this.ArrayIndex])
-        if(this.ArrayIndex === this.strings.length){
-            if(!this.loop)return;
-            this.ArrayIndex = 0
-            this.timeout= setTimeout(() => {
-                this.beginAnimation()
-            }, this.delay);
-        }else{
-            this.timeout = setTimeout(() => {
-                this.beginAnime(this.currentStrPos, this.strings[this.ArrayIndex])
-            }, this.delay);
-        }
-    }else {
+      // if our letter index is last in the immediate string,
+    if (i > curr.length - 1) {
+      this.ArrayIndex++;
+      this.currentStrPos = 0;
+      this.loadSpeed = this.defaultSpeed;
+      // check if the string is the last string
+      if (this.ArrayIndex === this.strings.length) {
+        // if loop is set to false, stop animation
+        if (!this.loop) return;
+        // else continue
+        this.ArrayIndex = 0;
+        this.timeout = setTimeout(() => {
+          this.beginAnimation();
+        }, this.delay);
+        // if it is not the last string, just do the next animation with the next string
+      } else {
+        this.timeout = setTimeout(() => {
+          // begin animation again
+          this.beginAnime(this.currentStrPos, this.strings[this.ArrayIndex]);
+        }, this.delay);
+      }//if there are other letters, move to the next letter in string
+    } else {
       i++;
-      
+
       this.timeout = setTimeout(() => {
+        // add animations
         this.doAnime(str, i);
       }, humanize);
     }
   }
 
   doAnime(str, i) {
-    //let currstr = '"'+this.currentString+'"'
     str[this.randomEl[i - 1]] = this.currentString[this.randomEl[i - 1]];
     let newstr = str.join("");
     this.insertText(newstr);
@@ -113,7 +126,7 @@ export default class LetterLoading {
   }
 
   humanize(speed) {
-    return Math.round((Math.random() * (speed*100)) / 2) + (speed*100);
+    return Math.round((Math.random() * (speed * 100)) / 2) + speed * 100;
   }
 
   insertText(str) {
@@ -124,6 +137,4 @@ export default class LetterLoading {
     if (!this._shuffle) return;
     this.sequence = this.sequence.sort(() => Math.random() - 0.5);
   }
-
 }
-

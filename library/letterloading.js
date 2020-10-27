@@ -131,15 +131,18 @@ __webpack_require__.r(__webpack_exports__);
 
 /**
  * Hey, tell me you love to simulate letter loading...
- * 
+ *
  * @param {string} el, this can be an HMTL element ID or element
- * @param {object} options options is an object that has some of the requirements...check './defaults.js to learn more
+ * @param {object} options options is an object that has some of the requirements. Check './defaults.js' to learn more
  * @returns {object} a new LetterLoading object
  */
 
 class LetterLoading {
+  // construct --- no construct
   constructor(el, options) {
-    _loadinitializer_js__WEBPACK_IMPORTED_MODULE_0__["loadinitializer"].load(this, el, options);
+    // initial required params --- load methos available in loadinitializer
+    _loadinitializer_js__WEBPACK_IMPORTED_MODULE_0__["loadinitializer"].load(this, el, options); // this methos begins the letter loading simulation
+
     this.beginAnimation();
   }
 
@@ -149,68 +152,76 @@ class LetterLoading {
 
   reset(restart = true) {
     clearInterval(this.timeout);
-    this.insertText('');
+    this.insertText("");
     this.currentStrPos = 0;
     this.ArrayIndex = 0;
   }
 
   beginAnimation() {
-    // (this)=> {}
+    // ....WELCOME, wait for half a sec before starting animation -- wait sec is set as
+    // @param: delayAnime
     this.timeout = setTimeout(() => {
-      // get a random string from options.STRINGS array if _shuffle is true   
-      this.randomMize(); //this.random();
-
+      // get a random string from options.STRINGS array if _shuffle is true
+      this.randomMize();
       this.beginAnime(this.currentStrPos, this.strings[this.ArrayIndex]);
-    }, 500);
+    }, this.delayAnime);
   }
 
   beginAnime(i, curr, str = []) {
     // set this.currentString to the passed string args
     this.currentString = curr; // creates a randomArray element usable to suff our strings
 
-    this.random(); // start our funny fetching strings
+    this.random(); // start fetching letters
 
     this.startFetching(i, curr, str);
   }
 
   startFetching(i, curr, str) {
     // increase the speed at some point
-    if (i >= curr.length / 3) {
-      this.loadSpeed = this.loadSpeed - 2;
-    } // get default speed
-    // make a simulating speed
+    // if string reaches 30%,60% and 90% decrease speed by 20% consecutively
+    if (i >= 0.90 * curr.length) {
+      this.loadSpeed = this.loadSpeed - 0.33 * this.loadSpeed;
+    } else if (i >= 0.50 * curr.length) {
+      this.loadSpeed = this.loadSpeed - 0.20 * this.loadSpeed;
+    } else if (i >= 0.30 * curr.length) {
+      this.loadSpeed = this.loadSpeed - 0.20 * this.loadSpeed;
+    } // make a simulating speed
 
 
     const humanize = this.humanize(this.loadSpeed); // check state if its empty
 
-    if (Object.keys(str).length === 0) str = this.getSudoStringArray(curr.length, this.char);
+    if (Object.keys(str).length === 0) str = this.getSudoStringArray(curr.length, this.char); // if our letter index is last in the immediate string,
 
     if (i > curr.length - 1) {
       this.ArrayIndex++;
       this.currentStrPos = 0;
-      this.loadSpeed = this.defaultSpeed; // console.log(this.strings[this.ArrayIndex])
+      this.loadSpeed = this.defaultSpeed; // check if the string is the last string
 
       if (this.ArrayIndex === this.strings.length) {
-        if (!this.loop) return;
+        // if loop is set to false, stop animation
+        if (!this.loop) return; // else continue
+
         this.ArrayIndex = 0;
         this.timeout = setTimeout(() => {
           this.beginAnimation();
-        }, this.delay);
+        }, this.delay); // if it is not the last string, just do the next animation with the next string
       } else {
         this.timeout = setTimeout(() => {
+          // begin animation again
           this.beginAnime(this.currentStrPos, this.strings[this.ArrayIndex]);
         }, this.delay);
-      }
+      } //if there are other letters, move to the next letter in string
+
     } else {
       i++;
       this.timeout = setTimeout(() => {
+        // add animations
         this.doAnime(str, i);
       }, humanize);
     }
   }
 
   doAnime(str, i) {
-    //let currstr = '"'+this.currentString+'"'
     str[this.randomEl[i - 1]] = this.currentString[this.randomEl[i - 1]];
     let newstr = str.join("");
     this.insertText(newstr);
@@ -291,8 +302,11 @@ class LoadInitializer {
     self.defaultSpeed = self.options.defaultspeed; //loop
 
     self.loop = self.options.loop; // strings
+    // then remove the space infront and back...
+    // it is needed for us to make better string num 
+    // calculations
 
-    self.strings = self.options.strings; //current string position
+    self.strings = self.options.strings.map(string => string.trim()); //current string position
 
     self.currentStrPos = 0; //default shuffling
 
@@ -306,7 +320,9 @@ class LoadInitializer {
 
     self.hideChar = self.options.hideChaar; // array index
 
-    self.ArrayIndex = 0; // delay before continuing to loop over string
+    self.ArrayIndex = 0; // set time to wait before rendering animation to DOM
+
+    self.delayAnime = 500; // delay before continuing to loop over string
 
     self.delay = self.options.delay; // stringlength
     // get order in which strings appeared in array

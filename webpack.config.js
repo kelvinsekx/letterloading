@@ -1,4 +1,5 @@
 const webpack = require("webpack")
+const path = require('path')
 
 
 module.exports = {
@@ -25,7 +26,7 @@ module.exports = {
         ]
     },
     output:{
-        path: __dirname,
+        path: path.resolve(__dirname, "library"),
         filename: "letterloading.js",
         library: "LetterLoading",
         libraryTarget: 'umd',
