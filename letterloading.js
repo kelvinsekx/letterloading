@@ -126,12 +126,20 @@ const defaults = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return LetterLoad; });
-/* harmony import */ var _loadinitializer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./loadinitializer */ "./src/loadinitializer.js");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return LetterLoading; });
+/* harmony import */ var _loadinitializer_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./loadinitializer.js */ "./src/loadinitializer.js");
 
-class LetterLoad {
-  constructor(element, options) {
-    _loadinitializer__WEBPACK_IMPORTED_MODULE_0__["loadInitializer"].load(this, element, options);
+/**
+ * Hey, tell me you love to simulate letter loading...
+ * 
+ * @param {string} el, this can be an HMTL element ID or element
+ * @param {object} options options is an object that has some of the requirements...check './defaults.js to learn more
+ * @returns {object} a new LetterLoading object
+ */
+
+class LetterLoading {
+  constructor(el, options) {
+    _loadinitializer_js__WEBPACK_IMPORTED_MODULE_0__["loadinitializer"].load(this, el, options);
     this.beginAnimation();
   }
 
@@ -147,8 +155,9 @@ class LetterLoad {
   }
 
   beginAnimation() {
+    // (this)=> {}
     this.timeout = setTimeout(() => {
-      // get a random string from options.STRINGS array if _shuffle is true
+      // get a random string from options.STRINGS array if _shuffle is true   
       this.randomMize(); //this.random();
 
       this.beginAnime(this.currentStrPos, this.strings[this.ArrayIndex]);
@@ -237,10 +246,6 @@ class LetterLoad {
     return Math.round(Math.random() * (speed * 100) / 2) + speed * 100;
   }
 
-  initialContent() {
-    return this.el.textContent;
-  }
-
   insertText(str) {
     this.el.innerHTML = str;
   }
@@ -258,23 +263,28 @@ class LetterLoad {
 /*!********************************!*\
   !*** ./src/loadinitializer.js ***!
   \********************************/
-/*! exports provided: default, loadInitializer */
+/*! exports provided: default, loadinitializer */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return LoadInitializer; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "loadInitializer", function() { return loadInitializer; });
-/* harmony import */ var _defaults__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./defaults */ "./src/defaults.js");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "loadinitializer", function() { return loadinitializer; });
+/* harmony import */ var _defaults_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./defaults.js */ "./src/defaults.js");
 
 class LoadInitializer {
   load(self, el, options) {
-    self.el = this.getElement(el);
-    self.initialElContent = self.initialContent(); // make options from default s and the rest
+    if (typeof el === "string") {
+      self.el = document.querySelector(el);
+    } else {
+      self.el = el;
+    } // make options from default s and the rest
 
-    self.options = { ...defaults,
+
+    self.options = { ..._defaults_js__WEBPACK_IMPORTED_MODULE_0__["default"],
       ...options
-    }; //loading speed
+    };
+    self.initialElContent = self.el.textContent; //loading speed
 
     self.loadSpeed = self.options.loadspeed; // generate default speed
 
@@ -346,19 +356,11 @@ class LoadInitializer {
     document.body.appendChild(css);
   }
 
-  getElement(element) {
-    if (typeof element === "string") {
-      return element[0] === "#" || element[0] === "." ? document.querySelector(element) : document.getElementById(element);
-    } else {
-      return element;
-    }
-  }
-
 }
-let loadInitializer = new LoadInitializer();
+let loadinitializer = new LoadInitializer();
 
 /***/ })
 
-/******/ });
+/******/ })["default"];
 });
 //# sourceMappingURL=letterloading.js.map

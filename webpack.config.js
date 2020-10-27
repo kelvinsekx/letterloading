@@ -1,9 +1,8 @@
 const webpack = require("webpack")
-const path = require("path")
 
 
 module.exports = {
-    mode: 'development',
+     mode: 'development',
     entry: {
         LetterLoading: './src/letterloading.js',
     },
@@ -16,7 +15,7 @@ module.exports = {
         rules: [
             {
                 test: /\.js$/,
-                exclude: /node-modules/,
+                exclude: /node_modules/,
                 loader: 'babel-loader'
             },
             {
@@ -26,10 +25,11 @@ module.exports = {
         ]
     },
     output:{
-        path: path.resolve(__dirname, 'dist'),
+        path: __dirname,
         filename: "letterloading.js",
         library: "LetterLoading",
         libraryTarget: 'umd',
+        libraryExport: "default",
     },
     
 }

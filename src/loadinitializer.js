@@ -1,12 +1,18 @@
-import "./defaults";
+import defaults from "./defaults.js";
 
 export default class LoadInitializer {
   load(self, el, options) {
-    self.el = this.getElement(el);
-    self.initialElContent = self.initialContent();
-
-    // make options from default s and the rest
+   
+      if (typeof el === "string") {
+        self.el= document.querySelector(el)
+      } else {
+         self.el = el
+      }
+    
+      // make options from default s and the rest
     self.options = { ...defaults, ...options };
+
+    self.initialElContent = self.el.textContent;
 
     //loading speed
     self.loadSpeed = self.options.loadspeed;
@@ -86,15 +92,8 @@ export default class LoadInitializer {
     css.innerHTML = innerCss;
     document.body.appendChild(css);
   }
-  getElement(element) {
-    if (typeof element === "string") {
-      return element[0] === "#" || element[0] === "."
-        ? document.querySelector(element)
-        : document.getElementById(element);
-    } else {
-      return element;
-    }
-  }
+ 
+  
 }
 
-export let loadInitializer = new LoadInitializer();
+export let loadinitializer = new LoadInitializer();

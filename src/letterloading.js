@@ -1,8 +1,16 @@
-import {loadInitializer} from "./loadinitializer";
+import {loadinitializer} from "./loadinitializer.js";
 
+
+/**
+ * Hey, tell me you love to simulate letter loading...
+ * 
+ * @param {string} el, this can be an HMTL element ID or element
+ * @param {object} options options is an object that has some of the requirements...check './defaults.js to learn more
+ * @returns {object} a new LetterLoading object
+ */
 export default class LetterLoading {
-  constructor(element, options) {
-    loadInitializer.load(this, element, options);
+  constructor(el, options) {
+    loadinitializer.load(this, el, options)
     this.beginAnimation();
   }
 
@@ -20,8 +28,9 @@ export default class LetterLoading {
 
 
   beginAnimation() {
+    // (this)=> {}
     this.timeout = setTimeout(() => {
-      // get a random string from options.STRINGS array if _shuffle is true
+      // get a random string from options.STRINGS array if _shuffle is true   
       this.randomMize();
       //this.random();
       this.beginAnime(this.currentStrPos, this.strings[this.ArrayIndex]);
@@ -107,9 +116,6 @@ export default class LetterLoading {
     return Math.round((Math.random() * (speed*100)) / 2) + (speed*100);
   }
 
-  initialContent() {
-    return this.el.textContent;
-  }
   insertText(str) {
     this.el.innerHTML = str;
   }
@@ -120,3 +126,4 @@ export default class LetterLoading {
   }
 
 }
+
