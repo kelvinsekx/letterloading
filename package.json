@@ -9,7 +9,7 @@
   "license": "ISC",
   "author": "kelvinsekx",
   "description": "A Javascript letter loading simulation library",
-  "main": "./dist/letterloading.js",
+  "main": "./library/letterloading.js",
   "scripts": {
     "start": "webpack-dev-server --mode development --open --hot",
     "build": "webpack --mode production",
