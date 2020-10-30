@@ -14,7 +14,7 @@ LetterLoading gives you the possibility to break it and achieve even more simula
 You can use LetterLoading as a 
 - script tag from CDN
 ```
-https://unpkg.com/letterloading@1.0.0/library/letterloading.js
+https://unpkg.com/letterloading@1.0.2/library/letterloading.js
 ```
 
 - install from NPM
@@ -49,7 +49,32 @@ var letterload = new LetterLoading('.element', options);
 
 ### Use with React js
 
-Check out a production ready piece @--- to see letterloading live.
+```javascript
+import React from "react"
+// ensure you'd :: npm i letterloading
+import LetterLoading from "letterloading";
+
+class LetterLoader extends React.Component{
+    componentDidMount(){
+        const options ={
+            strings: ["I love you", "And I meant the former" ]
+          };
+          this.letterload = new LetterLoading(this.el, options);
+    }
+
+    componentWillUnmount(){
+        this.letterload.destroy();
+    }
+    render(){
+        return(
+            <span ref={(el) => { this.el = el; }}/>
+        )
+    }
+}
+
+export default LetterLoader;
+```
+
 
 # Contributing
 
