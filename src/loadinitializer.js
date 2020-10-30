@@ -32,6 +32,9 @@ export default class LoadInitializer {
     //current string position
     self.currentStrPos = 0;
 
+    // tell if to randomize letters or not
+    self.randomizeEl = self.options.randomizeEl
+
     //default shuffling
     self._shuffle = false;
 

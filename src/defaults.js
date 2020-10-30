@@ -5,6 +5,7 @@ const defaults = {
   hideChaar: true,
   delay: 2500,
   loop: true,
+  randomizeEl: true,
 };
 
 export default defaults;

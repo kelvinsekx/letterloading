@@ -42,7 +42,7 @@ export default class LetterLoading {
   beginAnime(i, curr, str = []) {
     // set this.currentString to the passed string args
     this.currentString = curr;
-    // creates a randomArray element usable to suff our strings
+    // creates a randomArray element usable to suff our strings if told to do so
     this.random();
     // start fetching letters
     this.startFetching(i, curr, str);
@@ -122,7 +122,11 @@ export default class LetterLoading {
 
   random() {
     const randomEl = this.getStringKeysIntoArray(this.currentString.length);
-    this.randomEl = randomEl.sort(() => Math.random() - 0.5);
+    if(this.randomizeEl){
+      this.randomEl = randomEl.sort(() => Math.random() - 0.5);
+      return;
+    }
+    this.randomEl = randomEl
   }
 
   humanize(speed) {
