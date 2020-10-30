@@ -40,6 +40,9 @@ var options = {
 var letterload = new LetterLoading('.element', options);
 ```
 
+## See letter loading in action
+[letterloading in action]( kelvinsekx.github.io/letterloading/)
+
 # Awesome apps with LetterLoading in action
 
 - https://www.kelvinsekx.codes
@@ -58,7 +61,7 @@ Read below to learn how you can be a part of improving LetterLoading js.
 
 ## Code of Conduct
 
-LetterLoading is built with love in mind, and has thereby adopted a Code Of Conduct that we expect our loving contributors to please adhere to. Please read the text at CODE_OF_CONDUCT.md 
+LetterLoading is built with love in mind, and has thereby adopted a Code Of Conduct that we expect our loving contributors to please adhere to. Please read the text at CODE_OF_CONDUCT.md
 
 ## Contributing Guide
 
