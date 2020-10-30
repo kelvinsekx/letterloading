@@ -40,9 +40,9 @@ var options = {
 var letterload = new LetterLoading('.element', options);
 ```
 
-# Awesome app with LetterLoading in action
+# Awesome apps with LetterLoading in action
 
-https://www.kelvinsekx.codes
+- https://www.kelvinsekx.codes
 
 ### Use with React js
 
@@ -58,11 +58,11 @@ Read below to learn how you can be a part of improving LetterLoading js.
 
 ## Code of Conduct
 
-LetterLoading is built with love in mind, and has thereby adopted a Code Of Conduct that we expect our loving contributors to please adhere to. Please read the text at https:/.... 
+LetterLoading is built with love in mind, and has thereby adopted a Code Of Conduct that we expect our loving contributors to please adhere to. Please read the text at CODE_OF_CONDUCT.md 
 
 ## Contributing Guide
 
-Read our [contributing guide]() to learn about our development process, how to propose bugfixes and improvements, and how to build and test your changes to LetterLoading.
+Read our [contributing guide](/.github/CONTRIBUTING.md) to learn about our development process, how to propose bugfixes and improvements, and how to build and test your changes to LetterLoading.
 
 # License
 
