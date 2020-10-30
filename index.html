@@ -6,8 +6,28 @@
     <title>fetch every single letter|...who told you not to fetch ?</title>
     <script src="./library/letterloading.js" type="text/javascript"></script>
     <script src="./assets/demo.js"></script>
+    <link rel="stylesheet" href="./public/styles.css">
   </head>
   <body>
-    <p>I like:<span id="main"></span></p>
+    <div id="container">
+      <h1>Letter Loading</h1>
+      <section class="paleteContainer">
+        <h2>Default Letter Loading Simulation</h2>
+        <div class="loadingPalete"><span id="main"></span></div>
+        <p>
+          <pre>
+            var letter = new LetterLoading('#main', {
+              strings: [
+                "You're lovely... yes you are",
+                "This is an example string",
+                "tell me about what more animation you love",
+                "Lastly, Hey, if you're Bukunmi, I love you"
+              ],
+              loadspeed: 5
+            });
+          </pre>
+        </p>
+      </section>
+    </div>
   </body>
 </html>

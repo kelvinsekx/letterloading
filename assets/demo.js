@@ -7,5 +7,6 @@ var letter = new LetterLoading('#main', {
       "tell me about what more animation you love",
       "Lastly, Hey, if you're Bukunmi, I love you"
     ],
+    loadspeed: 5
   });
 })
