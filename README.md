@@ -41,7 +41,7 @@ var letterload = new LetterLoading('.element', options);
 ```
 
 ## See letter loading in action
-[letterloading in action](https://www.kelvinsekx.github.io/letterloading/)
+[letterloading in action](https://kelvinsekx.github.io/letterloading/)
 
 # Awesome apps with LetterLoading in action
 
