@@ -50,12 +50,12 @@ export default class LetterLoading {
 
   startFetching(i, curr, str) {
     // increase the speed at some point
-    // if string reaches 30%,50% and 90% decrease speed by 20% consecutively
-    if(i >= (0.90*curr.length)){
-      this.loadSpeed = (this.loadSpeed - (0.33*this.loadSpeed));
-    }else if (i >= (0.50 * curr.length)){
+    // if string reaches 20%,40% and 70% decrease speed by 20% consecutively
+    if(i >= (0.70*curr.length)){
+      this.loadSpeed = (this.loadSpeed - (0.50*this.loadSpeed));
+    }else if (i >= (0.40 * curr.length)){
       this.loadSpeed = (this.loadSpeed-(0.20*this.loadSpeed));
-    }else if (i >= (0.30 * curr.length)){
+    }else if (i >= (0.20 * curr.length)){
       this.loadSpeed = (this.loadSpeed-(0.20*this.loadSpeed));
     }
      

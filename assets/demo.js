@@ -2,10 +2,10 @@ document.addEventListener('DOMContentLoaded', function() {
 //console.log(letter)
 var letter = new LetterLoading('#main', {
     strings: [
-      "kelvin is crazy amazing",
-      "I love you",
-      "I am gone the way",
-      "Hey, if you're Bukunmi, I love you"
+      "You're lovely... yes you are",
+      "This is an example string",
+      "tell me about what more animation you love",
+      "Lastly, Hey, if you're Bukunmi, I love you"
     ],
   });
 })

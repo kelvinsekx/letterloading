@@ -1,12 +1,12 @@
 {
-  "name": "letterloading.js",
-  "version": "1.0.0",
+  "name": "letterloading",
+  "version": "1.0.1",
   "homepage": "https://github.com/kelvinsekx/letterloading#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kelvinsekx/letterloading.git"
   },
-  "license": "ISC",
+  "license": "MIT",
   "author": "kelvinsekx",
   "description": "A Javascript letter loading simulation library",
   "main": "./library/letterloading.js",
@@ -24,7 +24,8 @@
     "url": "https://github.com/kelvinsekx/letterloading/issues"
   },
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "np": "^6.5.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.3",
