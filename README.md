@@ -2,7 +2,7 @@
 
 LetterLoading js is a javascript library for making awesome letter simulations. It default simulation is a letter loading simulation.
 
-# Core concept of LetterLoading.
+# Core concepts of LetterLoading.
 
 - **flexibility:**
 This is because it is intended from ground up to do than just loading letter simulation. It could be extended to achieve even more animation simulation.
