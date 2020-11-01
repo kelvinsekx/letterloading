@@ -18,7 +18,7 @@ export default class LoadInitializer {
     self.loadSpeed = self.options.loadspeed;
 
     // generate default speed
-    self.defaultSpeed = self.options.defaultspeed;
+    self.defaultSpeed = self.options.loadspeed;
 
     //loop
     self.loop = self.options.loop;

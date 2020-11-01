@@ -26,6 +26,7 @@ module.exports = {
         ]
     },
     output:{
+        globalObject: "this",
         path: path.resolve(__dirname, "library"),
         filename: "letterloading.js",
         library: "LetterLoading",
