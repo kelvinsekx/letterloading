@@ -19,7 +19,7 @@ cd letterloading
 npm install
 ```
 
-- Start the server, and everything appears on the nrowser for you. 
+- Start the server, and everything appears on the browser for you. 
 Start breaking the library, 
 
 ```
@@ -29,5 +29,5 @@ npm start
 ## If you just added some cool stuff, or just deducted some ugly stuff
 
 - Create a repo and add the new letterloading
-- Tell us your made some cool stuff as clear as possible
+- Tell us you made some cool stuff as clear as possible
 - We will love your contributions
