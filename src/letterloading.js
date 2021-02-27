@@ -1,19 +1,20 @@
-import { loadinitializer } from "./loadinitializer.js";
+import { initializer } from "./loadinitializer.js";
 
 /**
- * Hey, tell me you love to simulate letter loading...
+ * Hey, tell me you love to simulate letters loading effects...
  *
- * @param {string} el, this can be an HMTL element ID or element
- * @param {object} options options is an object that has some of the requirements. Check './defaults.js' to learn more
+ * @param {string} el, this can be an HMTL element ID attribute or
+ *  all ready called element.
+ * @param {object} options options is an object that has some 
+ * predefined letterloading attributes. Check './defaults.js' to learn more
  * @returns {object} a new LetterLoading object
  */
 export default class LetterLoading {
-  // construct --- no construct
   constructor(el, options) {
-    // initial required params --- load methos available in loadinitializer
-    loadinitializer.load(this, el, options);
+    // initial required params --- load methods available in loadinitializer
+    initializer.load(this, el, options);
 
-    // this methos begins the letter loading simulation
+    // this method begins the letter loading simulation
     this.beginAnimation();
   }
 
@@ -30,11 +31,14 @@ export default class LetterLoading {
   }
 
   beginAnimation() {
-    // ....WELCOME, wait for half a sec before starting animation -- wait sec is set as
-    // @param: delayAnime
+    // ....WELCOME, wait for half a sec before starting animation 
+    //  wait second is set as delayAnime at `line 53 loadinitializer.js`
     this.timeout = setTimeout(() => {
-      // get a random string from options.STRINGS array if _shuffle is true
+      // get a random string from options.STRINGS array if 
+      // this.shuffle is true
       this.randomMize();
+      // currentStrPos is the place of lettter in a string[, this.strings],
+      // this.strings[, this.ArrayIndex] is the string you want to animate
       this.beginAnime(this.currentStrPos, this.strings[this.ArrayIndex]);
     }, this.delayAnime);
   }
@@ -50,7 +54,7 @@ export default class LetterLoading {
 
   startFetching(i, curr, str) {
     // increase the speed at some point
-    // if string reaches 20%,40% and 70% decrease speed by 20% consecutively
+    // if string reaches 20%, 40% and 70% increase speed by 20% consecutively
     if(i >= (0.70*curr.length)){
       this.loadSpeed = (this.loadSpeed - (0.50*this.loadSpeed));
     }else if (i >= (0.40 * curr.length)){
@@ -66,7 +70,7 @@ export default class LetterLoading {
     if (Object.keys(str).length === 0)
       str = this.getSudoStringArray(curr.length, this.char);
 
-      // if our letter index is last in the immediate string,
+    /** if our letter index is last in the immediate string,*/
     if (i > curr.length - 1) {
       this.ArrayIndex++;
       this.currentStrPos = 0;
@@ -104,12 +108,14 @@ export default class LetterLoading {
     this.startFetching(i, this.currentString, str);
   }
 
+  // this method helps us to create a replica number of string character
+  // but in a sudo form.
   getSudoStringArray(length, char) {
-    let initialArrayContent = [];
-    for (let i = 0; i < length; i++) {
-      initialArrayContent.push(char);
+    let sudoContentInArray = [], i;
+    for ( i = 0; i < length; i++) {
+      sudoContentInArray.push(char);
     }
-    return initialArrayContent;
+    return sudoContentInArray;
   }
 
   getStringKeysIntoArray(stringlength) {

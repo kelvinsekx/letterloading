@@ -2,14 +2,10 @@ import defaults from "./defaults.js";
 
 export default class LoadInitializer {
   load(self, el, options) {
-   
-      if (typeof el === "string") {
-        self.el= document.querySelector(el)
-      } else {
-         self.el = el
-      }
+    // node
+    self.el = (document.querySelector(el) || el)
     
-      // make options from default s and the rest
+    // make new options from defaults and the rest
     self.options = { ...defaults, ...options };
 
     self.initialElContent = self.el.textContent;
@@ -105,4 +101,4 @@ export default class LoadInitializer {
   
 }
 
-export let loadinitializer = new LoadInitializer();
+export let initializer = new LoadInitializer();

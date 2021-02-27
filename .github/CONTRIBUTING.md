@@ -13,7 +13,7 @@ git clone ...
 cd letterloading
 ```
 
-- Install all required dependencies. But before you do, ensure node is installed on your PC. OK
+- Install all required dependencies. But before you do, ensure node is installed on your PC. OK ?
 
 ```
 npm install
@@ -26,8 +26,13 @@ Start breaking the library,
 npm start
 ```
 
-## If you just added some cool stuff, or just deducted some ugly stuff
+## If you just added some cool stuff, or  deducted some ugly stuff
+- check out your stuff on your browser firstly, by using
 
-- Create a repo and add the new letterloading
+`npm run build`
+
+on your terminal. Then try to see the resulting changes on your devserver.
+
+- If you've done the above, YAY!!! You can now create a repo and add the new letterloading
 - Tell us you made some cool stuff as clear as possible
 - We will love your contributions

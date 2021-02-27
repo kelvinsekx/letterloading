@@ -5,6 +5,7 @@ div {
   padding: 0;
   box-sizing: border-box;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 105%;
 }
 
 #container {
@@ -37,6 +38,15 @@ section {
     border-radius: 1.2rem;
     padding: 0.3em 2rem;
     font-weight: bolder;
+}
+
+.loadingPalete_spec{
+  background-color: rgba(129, 224, 224,0.3);
+  width: 100%;
+  min-height: 6rem;
+  border-radius: 1.2rem;
+  padding: 0.3em 2rem;
+  font-weight: bolder;
 }
 
 footer>p{

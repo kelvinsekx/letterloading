@@ -5,7 +5,7 @@ LetterLoading js is a javascript library for making awesome letter simulations. 
 # Core concepts of LetterLoading.
 
 - **flexibility:**
-This is because it is intended from ground up to do than just loading letter simulation. It could be extended to achieve even more animation simulation.
+This is because it is intended from ground up to do than just loading letter simulation. It could be extended to achieve even more animation simulation (this feature is currently work in progress).
 - **robustness:**
 LetterLoading gives you the possibility to break it and achieve even more simulation.
 
@@ -14,7 +14,7 @@ LetterLoading gives you the possibility to break it and achieve even more simula
 You can use LetterLoading as a 
 - script tag from CDN
 ```
-https://unpkg.com/letterloading@1.0.2/library/letterloading.js
+https://unpkg.com/letterloading@1.0.3/library/letterloading.js
 ```
 
 - install from NPM
@@ -80,7 +80,7 @@ export default LetterLoader;
 
 The purpose of LetterLoading Library is to make minimal and yet robust imaginative animations and simulations to letters or strings. 
 
-We aim to provide ready to use library to provide all sort of letter animations. Therefore, to achieve this big aims your contribution is always welcomed. We are open source.
+We aim to provide ready to use library to provide all sort of letter animations. But this is work in progress and the plan may seem slow for now. However, to achieve these big aims your contribution is always welcomed. We are open source.
 
 Read below to learn how you can be a part of improving LetterLoading js.
 
