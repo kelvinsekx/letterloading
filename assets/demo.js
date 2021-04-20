@@ -25,7 +25,7 @@ var letter = new LetterLoading('#main', {
     ],
     loadspeed: 2,
     randomizeEl: false,
-    char: "",
+    simulate: "typed"
   });
 
   var letter4 = new LetterLoading('#main4', {

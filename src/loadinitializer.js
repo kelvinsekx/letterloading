@@ -28,8 +28,8 @@ export default class LoadInitializer {
     //current string position
     self.currentStrPos = 0;
 
-    // tell if to randomize letters or not
-    self.randomizeEl = self.options.randomizeEl
+    /**  tell if to randomize letters or not */
+    self.randomizeEl = self.simulate === "typed" ? false : self.options.randomizeEl
 
     //default shuffling
     self._shuffle = false;
@@ -41,7 +41,7 @@ export default class LoadInitializer {
     self.randomEl;
 
     // hidden char to fill space
-    self.char = self.options.char;
+    self.char = self.simulate === "typed" ? "" : self.options.char;
 
     //if hide char
     self.hideChar = self.options.hideChaar;
@@ -55,6 +55,19 @@ export default class LoadInitializer {
     // delay before continuing to loop over string
     self.delay = self.options.delay;
 
+    // intuitively tell me what to do
+    self.simulate = self.options.simulate;
+
+    // describe your cursor type, we have them
+    /**
+     * cursor can be
+     * Blocked
+     * Line
+     * Underscore
+     */
+    self.cursorType = self.options.cursorType;
+    /**blinking defaults to "yes" */
+    self.blinking = self.options.blinking;
     // stringlength
     // get order in which strings appeared in array
     self.sequence = [];
@@ -63,6 +76,15 @@ export default class LoadInitializer {
     }
     this.appendCsstoHead(self);
     this.hideCharByForce(self);
+    this.setBlinking(self)
+  }
+
+  setBlinking(self){
+     if (!self.options.blinking){
+       self.blinking = "yes"
+       return
+     }
+     return self.options.blinking = "no"
   }
   hideCharByForce(self) {
     if (!self.hideChar) return;

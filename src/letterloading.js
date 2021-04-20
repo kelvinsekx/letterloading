@@ -37,49 +37,68 @@ export default class LetterLoading {
       // get a random string from options.STRINGS array if 
       // this.shuffle is true
       this.randomMize();
-      // currentStrPos is the place of lettter in a string[, this.strings],
+      // currentStrPos is the place of lettter in a string[, this.strings] usually 0,
       // this.strings[, this.ArrayIndex] is the string you want to animate
       this.beginAnime(this.currentStrPos, this.strings[this.ArrayIndex]);
     }, this.delayAnime);
   }
 
-  beginAnime(i, curr, str = []) {
+  beginAnime(currentStrPos, curr, str = []) {
     // set this.currentString to the passed string args
     this.currentString = curr;
-    // creates a randomArray element usable to suff our strings if told to do so
+    // creates a randomArray element use-able to suff our strings if told to do so
     this.random();
     // start fetching letters
-    this.startFetching(i, curr, str);
+    this.startFetching(currentStrPos, curr, str);
   }
 
-  startFetching(i, curr, str) {
-    // increase the speed at some point
-    // if string reaches 20%, 40% and 70% increase speed by 20% consecutively
-    if(i >= (0.70*curr.length)){
-      this.loadSpeed = (this.loadSpeed - (0.50*this.loadSpeed));
-    }else if (i >= (0.40 * curr.length)){
-      this.loadSpeed = (this.loadSpeed-(0.20*this.loadSpeed));
-    }else if (i >= (0.20 * curr.length)){
-      this.loadSpeed = (this.loadSpeed-(0.20*this.loadSpeed));
-    }
-     
+  typedSpeed(){
+    return this.loadSpeed
+  }
 
+  loadingSpeed(strIndex, currentString){
+    // increase the speed at some point: so that
+    // if string reaches 20%, 40% and 70% length of the currentString,
+    //  increase speed for fetching (loadSpeed) by 20% consecutively
+    if(strIndex >= (0.70*currentString.length)){
+      this.loadSpeed = (this.loadSpeed - (0.50 * this.loadSpeed));
+    }else if (strIndex >= (0.40 * currentString.length)){
+      this.loadSpeed = (this.loadSpeed-(0.20 * this.loadSpeed));
+    }else if (strIndex >= (0.20 * currentString.length)){
+      this.loadSpeed = (this.loadSpeed-(0.20 * this.loadSpeed));
+    }
+
+    return this.loadSpeed
+  }
+
+  simulater(option, strIndex, currentString){
+    if (option === "typed") {
+      return this.typedSpeed()
+    }
+    return this.loadingSpeed(strIndex, currentString)
+  }
+  startFetching(strIndex, currentString, str) {
+    this.simulater(this.simulate, strIndex, currentString)
     // make a simulating speed
     const humanize = this.humanize(this.loadSpeed);
-    // check state if its empty
+    // check state if its empty:
+    // this simply creates a sudoString we then we compare and print to the screen
+    // with doAnime
     if (Object.keys(str).length === 0)
-      str = this.getSudoStringArray(curr.length, this.char);
+      str = this.getSudoStringArray(currentString.length, this.char);
 
-    /** if our letter index is last in the immediate string,*/
-    if (i > curr.length - 1) {
+    /** if the present letter to be printed is last in the  currentString,*/
+    if (strIndex > currentString.length - 1) {
       this.ArrayIndex++;
       this.currentStrPos = 0;
       this.loadSpeed = this.defaultSpeed;
-      // check if the string is the last string
+      // if the letter is last, 
+      // check if the string is the last string too
+      // if both agrees to true,
       if (this.ArrayIndex === this.strings.length) {
-        // if loop is set to false, stop animation
+        // Do not loop when loop parameter is set to false: stop animation
         if (!this.loop) return;
-        // else continue
+        // else, continue the animation and go to the first string in the array
         this.ArrayIndex = 0;
         this.timeout = setTimeout(() => {
           this.beginAnimation();
@@ -92,11 +111,11 @@ export default class LetterLoading {
         }, this.delay);
       }//if there are other letters, move to the next letter in string
     } else {
-      i++;
+      strIndex++;
 
       this.timeout = setTimeout(() => {
         // add animations
-        this.doAnime(str, i);
+        this.doAnime(str, strIndex);
       }, humanize);
     }
   }
