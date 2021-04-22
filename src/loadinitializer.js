@@ -29,7 +29,7 @@ export default class LoadInitializer {
     self.currentStrPos = 0;
 
     /**  tell if to randomize letters or not */
-    self.randomizeEl = self.simulate === "typed" ? false : self.options.randomizeEl
+    self.randomizeEl =  self.options.randomizeEl
 
     //default shuffling
     self._shuffle = false;
@@ -41,7 +41,7 @@ export default class LoadInitializer {
     self.randomEl;
 
     // hidden char to fill space
-    self.char = self.simulate === "typed" ? "" : self.options.char;
+    self.char =  self.options.char;
 
     //if hide char
     self.hideChar = self.options.hideChaar;
@@ -58,6 +58,17 @@ export default class LoadInitializer {
     // intuitively tell me what to do
     self.simulate = self.options.simulate;
 
+    // monitor set cursor or not
+    this.cursorExist = false;
+    //make cursor or not
+    self.cursor = self.options.cursor;
+
+    // cursor color
+    self.cColor = self.options.color;
+
+    //set cursorType
+    self.cursorType = self.options.cursorType
+
     // describe your cursor type, we have them
     /**
      * cursor can be
@@ -65,7 +76,6 @@ export default class LoadInitializer {
      * Line
      * Underscore
      */
-    self.cursorType = self.options.cursorType;
     /**blinking defaults to "yes" */
     self.blinking = self.options.blinking;
     // stringlength
@@ -74,9 +84,23 @@ export default class LoadInitializer {
     for (let i in self.strings) {
       self.sequence[i] = i;
     }
+    // set simulate first
+    this.setToTyped(self)
+    // this.check(self)
     this.appendCsstoHead(self);
     this.hideCharByForce(self);
     this.setBlinking(self)
+  }
+
+  check(self){
+    console.log(self.cursorType)
+  }
+
+  setToTyped (self) {
+    if(self.simulate === "typed") {
+      self.char = ""
+      self.randomizeEl = false
+    }
   }
 
   setBlinking(self){
@@ -92,7 +116,9 @@ export default class LoadInitializer {
   }
 
   appendCsstoHead(self) {
-    const cssname = "data-hide";
+    const color = self.cColor;
+
+    const cssname = "data-type-css";
 
     if (!self.hideChar) {
       return;
@@ -102,6 +128,8 @@ export default class LoadInitializer {
     }
 
     let css = document.createElement("style");
+    // depreciation was of W3C and WHT...
+    // visit https://github.com/microsoft/TypeScript/issues/30791 for more info
     css.type = "text/css";
     css.setAttribute(cssname, true);
 
@@ -112,6 +140,57 @@ export default class LoadInitializer {
               .data-hide{
                 opacity: 0;}`;
     }
+
+    if(self.cursor) {
+      innerCss += `
+        .line-cursor {
+          font-weight: 100;
+          font-size: 30px;
+          -webkit-animation: 1s blink step-end infinite;
+          -moz-animation: 1s blink step-end infinite;
+          -ms-animation: 1s blink step-end infinite;
+          -o-animation: 1s blink step-end infinite;
+          animation: 1s blink step-end infinite;
+        }
+        .block-cursor {
+          font-weight: 900;
+          width: 800px;
+          -webkit-animation: 1s blink step-end infinite;
+          -moz-animation: 1s blink step-end infinite;
+          -ms-animation: 1s blink step-end infinite;
+          -o-animation: 1s blink step-end infinite;
+          animation: 1s blink step-end infinite;
+        }
+        .underscore-cursor {
+          font-weight: 900;
+          width: 800px;
+          -webkit-animation: 1s blink step-end infinite;
+          -moz-animation: 1s blink step-end infinite;
+          -ms-animation: 1s blink step-end infinite;
+          -o-animation: 1s blink step-end infinite;
+          animation: 1s blink step-end infinite;
+        }
+        @keyframes blink {
+          from, to {
+            opacity: 0.9;
+          }
+          50%{
+            opacity: 0.0;
+          }
+        }
+
+        .block {
+          width: 0.45rem;
+          padding: 0.5em 0.07em;
+          display: inline-block;
+          background: ${color ? color : 'black'};
+          margin-left: 0.1em;
+          margin-top: 0.3em;
+          top: 5px;
+        }
+      `
+    }
+
 
     if (css.length === 0) {
       return;

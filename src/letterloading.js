@@ -39,6 +39,9 @@ export default class LetterLoading {
       this.randomMize();
       // currentStrPos is the place of lettter in a string[, this.strings] usually 0,
       // this.strings[, this.ArrayIndex] is the string you want to animate
+
+      // before you go ahead, if cursor is set to true make one
+      this.makeCursor()
       this.beginAnime(this.currentStrPos, this.strings[this.ArrayIndex]);
     }, this.delayAnime);
   }
@@ -54,6 +57,16 @@ export default class LetterLoading {
 
   typedSpeed(){
     return this.loadSpeed
+  }
+
+  makeCursor (){
+    if (this.cursorExist) return
+    if (this.cursor){
+      this.appendCursor();
+      this.cursorExist = true;
+      return
+    }
+    return;
   }
 
   loadingSpeed(strIndex, currentString){
@@ -158,6 +171,31 @@ export default class LetterLoading {
     return Math.round((Math.random() * (speed * 100)) / 2) + speed * 100;
   }
 
+  appendCursor (){
+        const node = document.createElement("span");
+        const cur = this.getCursorType(this.cursorType)
+        node.className = cur;
+        const cursorCha = this.getCursorCha(this.cursorType)
+        if(!cursorCha)return
+        node.append(cursorCha);
+        // console.log(node)
+        this.el.parentNode &&
+      this.el.parentNode.insertBefore(node, this.el.nextSibling);
+  }
+
+  getCursorCha(type){
+    const node = document.createElement("span");
+    node.className = "block"
+    if (type === "line") return "|"
+    else if (type === "block") return node;
+    else if (type === "underscore")return "_"
+  }
+
+  getCursorType(type){
+    if (type === "line") return "line-cursor"
+    else if (type === "block") return "block-cursor"
+    else if (type === "underscore")return "underscore-cursor"
+  }
   insertText(str) {
     this.el.innerHTML = str;
   }

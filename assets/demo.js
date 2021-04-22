@@ -24,8 +24,23 @@ var letter = new LetterLoading('#main', {
       "Lastly, Hey, if you're Bukunmi, I love you"
     ],
     loadspeed: 2,
-    randomizeEl: false,
-    simulate: "typed"
+    cursor: true,
+    simulate: "typed",
+    cursorType: "block"
+  });
+
+  var letter6 = new LetterLoading('#main6', {
+    strings: [
+      "You're lovely... yes you are",
+      "This is an example string",
+      "tell me about what more animation you love",
+      "Lastly, Hey, if you're Bukunmi, I love you"
+    ],
+    loadspeed: 2,
+    cursor: true,
+    simulate: "typed",
+    // cursorType is set to line
+    cursorType: "line"
   });
 
   var letter4 = new LetterLoading('#main4', {

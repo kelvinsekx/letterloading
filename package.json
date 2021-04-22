@@ -1,6 +1,6 @@
 {
   "name": "letterloading",
-  "version": "1.0.5",
+  "version": "1.2.0",
   "homepage": "https://github.com/kelvinsekx/letterloading#readme",
   "repository": {
     "type": "git",
@@ -13,7 +13,7 @@
   "scripts": {
     "start": "webpack-dev-server --mode development --open --hot",
     "build": "webpack --mode production",
-    "test": "echo \"No test specified\""
+    "test": "echo \"No test specified: it on it way\""
   },
   "keywords": [
     "letterloading",

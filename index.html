@@ -27,6 +27,49 @@
       </section>
 
       <section class="paleteContainer">
+        <h2> Twick LetterLoading to behave like typed js with even more swag, set cursorType</h2>
+        <div class="loadingPalete"><span id="main3"></span></div>
+        <p>
+          <pre>
+            var letter3 = new LetterLoading('#main3', {
+              strings: [
+                "You're lovely... yes you are",
+                "This is an example string",
+                "tell me about what more animation you love",
+                "Lastly, Hey, if you're Bukunmi, I love you"
+              ],
+              loadspeed: 2,
+              cursor: true,
+              simulate: "typed",
+              cursorType: "block"
+            });
+          </pre>
+        </p>
+      </section>
+
+      <section class="paleteContainer">
+        <h2> Letterloading cursorType can be set to <b>line, block or underscore</b>. see line example</h2>
+        <div class="loadingPalete"><span id="main6"></span></div>
+        <p>
+          <pre>
+            var letter6 = new LetterLoading('#main6', {
+              strings: [
+                "You're lovely... yes you are",
+                "This is an example string",
+                "tell me about what more animation you love",
+                "Lastly, Hey, if you're Bukunmi, I love you"
+              ],
+              loadspeed: 2,
+              cursor: true,
+              simulate: "typed",
+              // cursorType is set to line
+              cursorType: "line"
+            });
+          </pre>
+        </p>
+      </section>
+
+      <section class="paleteContainer">
         <h2> Letter Loading Loop set to false</h2>
         <div class="loadingPalete"><span id="main2"></span></div>
         <p>
@@ -41,25 +84,6 @@
               // set loop to false;
               loop : false,
               loadspeed: 5
-            });
-          </pre>
-        </p>
-      </section>
-
-      <section class="paleteContainer">
-        <h2> Twick LetterLoading to behave like typed js</h2>
-        <div class="loadingPalete"><span id="main3"></span></div>
-        <p>
-          <pre>
-            var letter3 = new LetterLoading('#main3', {
-              strings: [
-                "You're lovely... yes you are",
-                "This is an example string",
-                "tell me about what more animation you love",
-                "Lastly, Hey, if you're Bukunmi, I love you"
-              ],
-              loadspeed: 2,
-              simulate: "typed"
             });
           </pre>
         </p>
@@ -111,6 +135,15 @@
       <footer>
         <p>LetterLoading is brought to you by <a href="https://www.github.com/kelvinsekx">kelvinsekx</a></p>
       </footer>
+       <!-- <div id="tello"></div> -->
+       <!--
+      <script>
+        const tello = document.getElementById("tello");
+        const node = document.createElement("span")
+        node.textContent="hell"
+       tello.insertBefore(node, tello.nextSibling)
+        console.log(tello)
+      </script> -->
     </div>
   </body>
 </html>
