@@ -2,7 +2,7 @@
 
 Thanks love because you would contribute! 🎉🎉🎉
 
-I, Ukuejubola Kelvin Oritsetimeyin (🎉kelvinsekx🎉), is honoured to seee you here and donot take any of your contributions for granted. I really appreciate your effort at making LetterLoading awesome loaded.
+I, Ukuejubola Kelvin Oritsetimeyin (🎉kelvinsekx🎉), is honoured to seee you here and do not take any of your contributions for granted. I really appreciate your effort at making LetterLoading awesome loaded.
 
 ## Dev
 

@@ -1,4 +1,5 @@
 import defaults from "./defaults.js";
+import {default as cssStyles} from "./funcCss"
 
 export default class LoadInitializer {
   load(self, el, options) {
@@ -89,7 +90,6 @@ export default class LoadInitializer {
     // this.check(self)
     this.appendCsstoHead(self);
     this.hideCharByForce(self);
-    this.setBlinking(self)
   }
 
   check(self){
@@ -103,19 +103,13 @@ export default class LoadInitializer {
     }
   }
 
-  setBlinking(self){
-     if (!self.options.blinking){
-       self.blinking = "yes"
-       return
-     }
-     return self.options.blinking = "no"
-  }
   hideCharByForce(self) {
     if (!self.hideChar) return;
     self.char = `<span class="data-hide">${self.char}</span>`;
   }
 
   appendCsstoHead(self) {
+    console.log(self.options)
     const color = self.cColor;
 
     const cssname = "data-type-css";
@@ -142,53 +136,11 @@ export default class LoadInitializer {
     }
 
     if(self.cursor) {
-      innerCss += `
-        .line-cursor {
-          font-weight: 100;
-          font-size: 30px;
-          -webkit-animation: 1s blink step-end infinite;
-          -moz-animation: 1s blink step-end infinite;
-          -ms-animation: 1s blink step-end infinite;
-          -o-animation: 1s blink step-end infinite;
-          animation: 1s blink step-end infinite;
-        }
-        .block-cursor {
-          font-weight: 900;
-          width: 800px;
-          -webkit-animation: 1s blink step-end infinite;
-          -moz-animation: 1s blink step-end infinite;
-          -ms-animation: 1s blink step-end infinite;
-          -o-animation: 1s blink step-end infinite;
-          animation: 1s blink step-end infinite;
-        }
-        .underscore-cursor {
-          font-weight: 900;
-          width: 800px;
-          -webkit-animation: 1s blink step-end infinite;
-          -moz-animation: 1s blink step-end infinite;
-          -ms-animation: 1s blink step-end infinite;
-          -o-animation: 1s blink step-end infinite;
-          animation: 1s blink step-end infinite;
-        }
-        @keyframes blink {
-          from, to {
-            opacity: 0.9;
-          }
-          50%{
-            opacity: 0.0;
-          }
-        }
-
-        .block {
-          width: 0.45rem;
-          padding: 0.5em 0.07em;
-          display: inline-block;
-          background: ${color ? color : 'black'};
-          margin-left: 0.1em;
-          margin-top: 0.3em;
-          top: 5px;
-        }
-      `
+      if (self.cursorType === undefined)return;
+      if(self.cursorType !== "line" && self.cursorType !== "underscore" && self.cursorType !== "block"){
+        throw new Error("sekx says: your cursorType isn't a valid cursorType")
+      }
+      innerCss += cssStyles(color)
     }
 
 

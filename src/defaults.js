@@ -10,7 +10,7 @@ const defaults = {
   delay: 2500,
   loop: true,
   randomizeEl: true,
-  cursor: "line"
+  cursor: true
 };
 
 export default defaults;
