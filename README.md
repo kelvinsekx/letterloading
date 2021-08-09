@@ -45,6 +45,10 @@ var letter = new LetterLoading.Liga('#main', {
 - **robustness:**
 LetterLoading gives you the possibility to break it and achieve even more simulation. Its API/options interfaces can be easily changed to meet your specific desires. 
 
+## See letter loading in action (The demo says it all)
+See practical examples on some of its animation and public use of her APIs.
+[letterloading in action](https://kelvinsekx.github.io/letterloading/)
+
 # Installation
 
 You can use LetterLoading as a 
@@ -94,10 +98,6 @@ var options = {
 
 var letter = new LetterLoading.Liga('.element', options);
 ```
-
-## See letter loading in action
-See practical examples on some of its animation and public use of her APIs.
-[letterloading in action](https://kelvinsekx.github.io/letterloading/)
 
 ### Use with React js
 
