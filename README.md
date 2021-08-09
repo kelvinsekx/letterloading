@@ -2,22 +2,45 @@
 
 LetterLoading js is a javascript library for making awesome letter simulations. It default simulation is a letter loading simulation.
 
-# Core concepts of LetterLoading.
+## Core concepts of LetterLoading.
 
 - **flexibility:**
-This is because it is intended from ground up to do than just loading letter simulation. It could be extended to achieve even more animation simulation (<span style="color: red">this feature is currently work in progress</span>). This is achieved with the **simulate API**.
+This is because it is intended from ground up to do than just loading letter simulation. It could be extended to achieve even more animation simulation (<span style="color: red">this feature is currently work in progress</span>).
 
-For example, you can make the library automatically simulate typed animation like this.
+You can extend Letterloading to do wonders
 
-```javascript
-var letter = new LetterLoading('#id', {
-    loadspeed: 2,
-    cursor: true,
-    simulate: "typed"
+```shell 
+class Laliga extends LetterLoading {
+  constructor(el, options) {
+    super(el, options);
+    this.beginAnimation();
+  } 
+  ...
+}
+```
+
+We have two animations type presently, and this is just the beginning of more types.
+
+```shell
+var letter = new LetterLoading.Liga('#main', {
+    loadspeed: 3,
+    randomizeEl : false
   });
 ```
 
-Please note: more automatic animation that be set with simulate is currently work in progress. "typed" is the only option yet.
+```shell
+ var letter2 = new LetterLoading.Typed('#main2', {
+    strings: [
+      "You're lovely... yes you are",
+      "This is an example string",
+      "tell me about what more animation you love",
+      "Lastly, Hey, if you're Bukunmi, I love you"
+    ],
+    // set loop to false;
+    loop : false,
+    loadspeed: 5
+  });
+```
 
 - **robustness:**
 LetterLoading gives you the possibility to break it and achieve even more simulation. Its API/options interfaces can be easily changed to meet your specific desires. 
@@ -46,7 +69,7 @@ To use letterloading is simple.
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <script src="https://unpkg.com/letterloading@1.2.0/library/letterloading.js" type="text/javascript"></script>
+        <script src="https://unpkg.com/letterloading@2.0.0/library/letterloading.js" type="text/javascript"></script>
         <script src="./demo.js"></script>
     </head>
     <body>
@@ -68,7 +91,8 @@ var options = {
 /**
  * LetterLoading takes two arguments of the element you want it to mount, and the necessary api objects in form of options
 */
-var letterload = new LetterLoading('.element', options);
+
+var letter = new LetterLoading.Liga('.element', options);
 ```
 
 ## See letter loading in action
@@ -87,7 +111,7 @@ class LetterLoader extends React.Component{
         const options ={
             strings: ["I love you", "And I meant the former" ]
           };
-          this.letterload = new LetterLoading(this.el, options);
+          this.letterload = new LetterLoading.Typed(this.el, options);
     }
 
     componentWillUnmount(){

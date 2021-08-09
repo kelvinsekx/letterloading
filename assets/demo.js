@@ -1,10 +1,11 @@
 document.addEventListener('DOMContentLoaded', function() {
 //console.log(letter)
-var letter = new LetterLoading('#main', {
-    loadspeed: 5
+var letter = new LetterLoading.Liga('#main', {
+    loadspeed: 3,
+    randomizeEl : false
   });
 
-  var letter2 = new LetterLoading('#main2', {
+  var letter2 = new LetterLoading.Typed('#main2', {
     strings: [
       "You're lovely... yes you are",
       "This is an example string",
@@ -16,7 +17,7 @@ var letter = new LetterLoading('#main', {
     loadspeed: 5
   });
 
-  var letter3 = new LetterLoading('#main3', {
+  var letter3 = new LetterLoading.Typed('#main3', {
     strings: [
       "You're lovely... yes you are",
       "This is an example string",
@@ -29,7 +30,7 @@ var letter = new LetterLoading('#main', {
     cursorType: "block"
   });
 
-  var letter6 = new LetterLoading('#main6', {
+  var letter6 = new LetterLoading.Typed('#main6', {
     strings: [
       "You're lovely... yes you are",
       "This is an example string",
@@ -43,7 +44,7 @@ var letter = new LetterLoading('#main', {
     cursorType: "line"
   });
 
-  var letter4 = new LetterLoading('#main4', {
+  var letter4 = new LetterLoading.Typed('#main4', {
     strings: [
       "You're lovely... yes you are",
       "This is an example string",
@@ -56,7 +57,7 @@ var letter = new LetterLoading('#main', {
     char: "*",
   });
 
-  var letter5 = new LetterLoading('#main5', {
+  var letter5 = new LetterLoading.Typed('#main5', {
     strings: [
       "Do this...",
       "with caution",

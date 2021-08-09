@@ -5,7 +5,7 @@ const path = require('path')
 module.exports = {
      mode: 'production',
     entry: {
-        LetterLoading: './src/letterloading.js',
+        LetterLoading: './src/libra.js',
     },
     devtool: '#source-map',
     devServer: {
@@ -30,8 +30,7 @@ module.exports = {
         path: path.resolve(__dirname, "library"),
         filename: "letterloading.js",
         library: "LetterLoading",
-        libraryTarget: 'umd',
-        libraryExport: "default",
+        libraryTarget: 'umd'
     },
     
 }

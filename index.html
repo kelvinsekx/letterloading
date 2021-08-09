@@ -19,8 +19,9 @@
         <div class="loadingPalete"><span id="main"></span></div>
         <p>
           <pre>
-            var letter = new LetterLoading('#main', {
-              loadspeed: 5
+            var letter = new LetterLoading.Liga('#main', {
+              loadspeed: 5,
+              randomizeEl : false
             });
           </pre>
         </p>
@@ -31,17 +32,16 @@
         <div class="loadingPalete"><span id="main3"></span></div>
         <p>
           <pre>
-            var letter3 = new LetterLoading('#main3', {
+            var letter2 = new LetterLoading.Typed('#main2', {
               strings: [
                 "You're lovely... yes you are",
                 "This is an example string",
                 "tell me about what more animation you love",
                 "Lastly, Hey, if you're Bukunmi, I love you"
               ],
-              loadspeed: 2,
-              cursor: true,
-              simulate: "typed",
-              cursorType: "block"
+              // set loop to false;
+              loop : false,
+              loadspeed: 5
             });
           </pre>
         </p>

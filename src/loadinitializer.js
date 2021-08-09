@@ -109,7 +109,7 @@ export default class LoadInitializer {
   }
 
   appendCsstoHead(self) {
-    console.log(self.options)
+    //console.log(self.options)
     const color = self.cColor;
 
     const cssname = "data-type-css";
