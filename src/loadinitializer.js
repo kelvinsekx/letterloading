@@ -5,34 +5,33 @@ export default class LoadInitializer {
   load(self, el, options) {
     // node
     self.el = (document.querySelector(el) || el)
-    
-    // make new options from defaults and the rest
+
+    // replace default options
     self.options = { ...defaults, ...options };
 
     self.initialElContent = self.el.textContent;
 
-    //loading speed
+    // loading speed
     self.loadSpeed = self.options.loadspeed;
 
     // generate default speed
     self.defaultSpeed = self.options.loadspeed;
 
-    //loop
+
     self.loop = self.options.loop;
 
-    // strings
-    // then remove the space infront and back...
+    // trim string in strings array
     // it is needed for us to make better string num 
     // calculations
     self.strings = self.options.strings.map((string)=> string.trim());
 
-    //current string position
+    // current string position
     self.currentStrPos = 0;
 
-    /**  tell if to randomize letters or not */
+    // randomize letters or not
     self.randomizeEl =  self.options.randomizeEl
 
-    //default shuffling
+    // default shuffling
     self._shuffle = false;
 
     // bind currentString
@@ -44,13 +43,14 @@ export default class LoadInitializer {
     // hidden char to fill space
     self.char =  self.options.char;
 
-    //if hide char
+    // if hide char
     self.hideChar = self.options.hideChaar;
 
     // array index
     self.ArrayIndex = 0;
 
-    // set time to wait before rendering animation to DOM
+    // set the amount of time to wait before rendering 
+    // animation to the DOM
     self.delayAnime = 500
 
     // delay before continuing to loop over string
@@ -61,32 +61,29 @@ export default class LoadInitializer {
 
     // monitor set cursor or not
     this.cursorExist = false;
-    //make cursor or not
+    
+    //create cursor or not
     self.cursor = self.options.cursor;
 
     // cursor color
     self.cColor = self.options.color;
 
-    //set cursorType
+    // set cursorType: Block, Line or Underscore
     self.cursorType = self.options.cursorType
 
-    // describe your cursor type, we have them
-    /**
-     * cursor can be
-     * Blocked
-     * Line
-     * Underscore
-     */
-    /**blinking defaults to "yes" */
+    // blinking defaults to "yes"
     self.blinking = self.options.blinking;
+
     // stringlength
     // get order in which strings appeared in array
     self.sequence = [];
     for (let i in self.strings) {
       self.sequence[i] = i;
     }
+
     // set simulate first
     this.setToTyped(self)
+
     // this.check(self)
     this.appendCsstoHead(self);
     this.hideCharByForce(self);
@@ -109,7 +106,6 @@ export default class LoadInitializer {
   }
 
   appendCsstoHead(self) {
-    //console.log(self.options)
     const color = self.cColor;
 
     const cssname = "data-type-css";
@@ -138,7 +134,7 @@ export default class LoadInitializer {
     if(self.cursor) {
       if (self.cursorType === undefined)return;
       if(self.cursorType !== "line" && self.cursorType !== "underscore" && self.cursorType !== "block"){
-        throw new Error("sekx says: your cursorType isn't a valid cursorType")
+        throw new Error("Letterloading: your cursorType isn't a valid cursorType")
       }
       innerCss += cssStyles(color)
     }
@@ -151,7 +147,6 @@ export default class LoadInitializer {
     document.body.appendChild(css);
   }
  
-  
 }
 
 export let initializer = new LoadInitializer();

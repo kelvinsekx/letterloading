@@ -3,13 +3,15 @@ const path = require('path')
 
 
 module.exports = {
-     mode: 'production',
+    mode: 'production',
     entry: {
-        LetterLoading: './src/libra.js',
+        LetterLoading: './src/main.js',
     },
-    devtool: '#source-map',
     devServer: {
-        inline: true,
+        static: { 
+            directory: path.resolve(__dirname, "") 
+        },
+        compress: true,
         port: 3838,
     },
     module:{

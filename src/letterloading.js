@@ -11,7 +11,6 @@ import { initializer } from "./loadinitializer.js";
  */
 export default class LetterLoading {
   constructor(el, options) {
-    // initial required params --- load methods available in loadinitializer
     initializer.load(this, el, options);
 
     // this method begins the letter loading simulation

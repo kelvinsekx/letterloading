@@ -27,13 +27,13 @@
     "express": "^4.17.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.3",
-    "@babel/preset-env": "^7.12.1",
-    "babel-loader": "^8.1.0",
-    "css-loader": "^4.3.0",
-    "style-loader": "^1.2.1",
-    "webpack": "^4.44.2",
-    "webpack-dev-server": "^3.11.0",
-    "webpack-cli": "^3.3.12"
+    "@babel/core": "^7.21.0",
+    "@babel/preset-env": "^7.20.2",
+    "babel-loader": "^9.1.2",
+    "css-loader": "^6.7.3",
+    "style-loader": "^3.3.2",
+    "webpack": "^5.76.1",
+    "webpack-cli": "^5.0.1",
+    "webpack-dev-server": "^4.11.1"
   }
 }
